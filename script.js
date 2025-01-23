@@ -74,6 +74,7 @@ function playGame() {
                     console.log(drawMsg);
                 }
                 break;
+                
         }
     }
 
