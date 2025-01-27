@@ -29,71 +29,81 @@ function playGame() {
         switch (humanChoice) {
             case "rock":
                 if (computerChoice == "scissors") {
-                    console.log(againstMsg);
-                    console.log(winMsg);
                     humanScore += 1;    
+                    choices.textContent = againstMsg;
+                    winner.textContent = winMsg;
                 } else if (computerChoice == "paper") {
-                    console.log(againstMsg);
-
-                    console.log(loseMsg);
                     computerScore += 1;
+                    choices.textContent = againstMsg;
+                    winner.textContent = loseMsg;
                 } else {
-                    console.log(againstMsg);
-                    console.log(drawMsg);
+                    choices.textContent = againstMsg;
+                    winnter.textContent = drawMsg;
                 }
                 break;
             case "scissors":
                 if (computerChoice == "paper") {
-                    console.log(againstMsg);
-                    console.log(winMsg);
-                    humanScore += 1;
+                    humanScore += 1;    
+                    choices.textContent = againstMsg;
+                    winner.textContent = winMsg;
                     
                 } else if (computerChoice == "rock") {
-                    console.log(againstMsg);
-                    console.log(loseMsg);
-                    computerScore += 1;
+                    computerScore += 1;    
+                    choices.textContent = againstMsg;
+                    winner.textContent = loseMsg;
                     
                 } else {
-                    console.log(againstMsg);
-                    console.log(drawMsg);
+                    choices.textContent = againstMsg;
+                    winner.textContent = drawMsg;
                 }
                 break;
             case "paper":
                 if (computerChoice == "rock") {
-                    console.log(againstMsg);
-                    console.log(winMsg);
-                    humanScore += 1;
+                    humanScore += 1;    
+                    choices.textContent = againstMsg;
+                    winner.textContent = winMsg;
                     
                 } else if (computerChoice == "scissors") {
-                    console.log(againstMsg);
-                    console.log(loseMsg);
-                    computerScore += 1;
+                    computerScore += 1;    
+                    choices.textContent = againstMsg;
+                    winner.textContent = loseMsg;
                     
                 } else {
-                    console.log(againstMsg);
-                    console.log(drawMsg);
+                    choices.textContent = againstMsg;
+                    winner.textContent = drawMsg;
                 }
                 break;
-                
         }
+        score.textContent = `Human: ${humanScore} Computer: ${computerScore}`;
     }
 
     let humanScore = 0;
     let computerScore = 0;
 
-    let gameEnd = false;
+    let choices = document.querySelector("#choices");
+    let winner = document.querySelector("#winner");
+    let score = document.querySelector("#score");
 
-    while (!gameEnd) {
-        playRound(getHumanChoice(), getComputerChoice());
-        if (humanScore == 5) {
-            console.log("Congrats! You won the game.");
-            gameEnd = true;
+    let selections = document.querySelector("#selections");
+    selections.addEventListener('click', function(event) {
+        let target = event.target;
+
+        switch (target.id) {
+            case 'rock':
+                playRound('rock', getComputerChoice());
+                break;
+
+            case 'paper':
+                playRound('paper', getComputerChoice());
+                break;
+            case 'scissors':
+                playRound('scissors', getComputerChoice());
+                break;
         }
-        if (computerScore == 5) {
-            console.log("Sorry. You lost.");
-            gameEnd = true;
-        }
-    }
+
+    })
+
+
 
 }
 
