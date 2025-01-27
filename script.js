@@ -38,7 +38,7 @@ function playGame() {
                     winner.textContent = loseMsg;
                 } else {
                     choices.textContent = againstMsg;
-                    winnter.textContent = drawMsg;
+                    winner.textContent = drawMsg;
                 }
                 break;
             case "scissors":
@@ -101,9 +101,22 @@ function playGame() {
                 break;
         }
 
+        if (humanScore == 5) {
+            results.removeChild(winner);
+            results.removeChild(score);
+            selections.remove();
+            choices.textContent = "You won! 5 points reached";
+            
+        }
+        if (computerScore == 5) {
+            results.removeChild(winner);
+            results.removeChild(score);
+            selections.remove();
+            choices.textContent = "You lost! 5 points reached";
+
+        }
+
     })
-
-
 
 }
 
